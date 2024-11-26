@@ -1,0 +1,62 @@
+{% extends "backstage.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}BookStore{% endblock title%}
+
+{% block content%}
+
+
+<br/>
+<div class="container-xl">
+  <br/>
+  <form method="post" enctype=multipart/form-data action={{ url_for('manager.dishedit') }}>
+    <table class="table table-bordered">
+      <!-- <tr>
+        <th>餐點編號</th>
+        <td><input class="form-control" type="text" value="{{ data.餐點編號 }}" name="pid" readonly class="id_input"></td>
+      </tr> -->
+      <tr>
+        <th>餐廳名稱</th>
+        <td><input class="form-control" type="text" value="{{ data.餐廳名稱 }}" name="rname" readonly required></td>
+      </tr>
+      <tr>
+        <th>餐點名稱</th>
+        <td><input class="form-control" type="text" value="{{ data.餐點名稱 }}" name="dname" readonly required></td>
+      </tr>
+      <tr>
+        <th>餐點價格</th>
+        <td><input class="form-control" type="text" value="{{ data.餐點價格 }}" name="price" required></td>
+      </tr>
+      <tr>
+        <th>餐點類別</th>
+          <td><input class="form-control" type="text" value="{{ data.餐點類別 }}" name="category" required></td>
+      </tr>
+      <tr>
+        <th>餐點敘述</th>
+        <td>
+          <textarea class="form-control" name="description">{{ data.餐點敘述 }}</textarea>
+        </td>
+      </tr>
+      <!-- <tr>
+        <th>商品圖片</th>
+        <td>
+          <input type="file" name="file" id="file-uploader" data-target="file-uploader"/>
+        </td>
+      </tr> -->
+    </table>
+    <center>
+      <div class="option">
+        <button class="btn btn-outline-success" type="submit">確定修改</button> 
+        <a href="{{ url_for('manager.productManager') }}"><button class="btn btn-outline-danger">回餐點管理</button></a>
+      </div>
+    </center>
+
+  </form>
+</div>
+
+
+
+{% endblock content%}

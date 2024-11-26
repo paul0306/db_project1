@@ -1,0 +1,67 @@
+{% extends "backstage.html" %}
+{% block head %}
+{{ super() }}
+
+{% endblock head %}
+
+{% block title %}BookStore{% endblock title%}
+
+{% block content%}
+
+
+<br/>
+<div class="container-xl">
+  <br/>
+  <form method="post" enctype=multipart/form-data action={{ url_for('manager.editemployee') }}>
+    <table class="table table-bordered">
+      <tr>
+        <th>餐廳名稱</th>
+        <!-- <td><input class="form-control" type="text" value="{{ data.餐廳名稱 }}" name="rname" required></td> -->
+        <td>
+          <select class="form-control" name="rname" required>
+            {% for restaurant in data.所有餐廳 %}
+              <option value="{{ restaurant }}" {% if restaurant == data.餐廳名稱 %}selected{% endif %}>
+                {{ restaurant }}
+              </option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>員工編號</th>
+        <td><input class="form-control" type="text" value="{{ data.員工編號 }}" name="eid" readonly required></td>
+      </tr>
+      <tr>
+        <th>員工電話</th>
+        <td><input class="form-control" type="text" value="{{ data.員工電話 }}" name="ephone" required></td>
+      </tr>
+      <tr>
+        <th>員工姓名</th>
+          <td><input class="form-control" type="text" value="{{ data.員工姓名 }}" name="ename" required></td>
+      </tr>
+      <tr>
+        <th>職位</th>
+        <td>
+          <textarea class="form-control" name="position">{{ data.職位 }}</textarea>
+        </td>
+      </tr>
+      <!-- <tr>
+        <th>商品圖片</th>
+        <td>
+          <input type="file" name="file" id="file-uploader" data-target="file-uploader"/>
+        </td>
+      </tr> -->
+    </table>
+    <center>
+      <div class="option">
+        <button class="btn btn-outline-success" type="submit">確定修改</button> 
+        <a href="{{ url_for('manager.employeeManager') }}"><button class="btn btn-outline-danger">回員工管理</button></a>
+      </div>
+    </center>
+
+  </form>
+</div>
+
+
+
+{% endblock content%}
