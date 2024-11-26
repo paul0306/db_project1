@@ -1,0 +1,51 @@
+{% extends "frontstage.html" %}
+{% block head %}
+{{ super() }}
+{% endblock head %}
+
+{% block title %}Restaurant Reservation{% endblock title%}
+
+{% block content %}
+<br/>
+
+<div class="container reservation-container mt-5 pt-4">
+  <h1 class="text-center mb-4">餐廳訂位</h1>
+  
+  <form method="post" id="reservation-form" class="bg-white p-4 rounded shadow-sm" enctype=multipart/form-data action={{ url_for('bookstore.reservation') }}>
+      <!-- 訂位姓名 -->
+      <div class="mb-3">
+        <label for="name" class="form-label">訂位姓名:</label>
+        <input type="text" id="rsname" name="rsname" class="form-control" required placeholder="請輸入您的姓名">
+      </div>
+
+      <!-- 預定分店 -->
+      <div class="mb-3">
+        <label for="date" class="form-label">分店:</label>
+        <input type="text" id="rname" name="rname" class="form-control" required>
+      </div>
+      
+      <!-- 預定日期 -->
+      <div class="mb-3">
+        <label for="date" class="form-label">預定日期:</label>
+        <input type="date" id="rsdate" name="rsdate" class="form-control" required>
+      </div>
+      
+      <!-- 電話 -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">電話:</label>
+        <input type="tel" id="rsphone" name="rsphone" class="form-control" required placeholder="請輸入您的電話" pattern="[0-9]{10}">
+      </div>
+      
+      <!-- 人數 -->
+      <div class="mb-3">
+        <label for="guests" class="form-label">人數:</label>
+        <input type="number" id="rsamount" name="rsamount" class="form-control" required min="1" placeholder="請輸入人數">
+      </div>
+      
+      <!-- 提交按鈕 -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">確認訂位</button>
+      </div>
+  </form>
+</div>
+{% endblock content %}
